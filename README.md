@@ -5,7 +5,9 @@
 Добавьте management plug-in и зайдите в веб-интерфейс.
 
 *Итогом выполнения домашнего задания будет приложенный скриншот веб-интерфейса RabbitMQ.*
+
 ![Interface](https://github.com/OhotinDY/sdb-04/blob/main/interface.jpg)
+
 ---
 
 ### Задание 2. Отправка и получение сообщений
