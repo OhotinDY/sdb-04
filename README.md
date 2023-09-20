@@ -76,3 +76,42 @@ $ rabbitmqadmin get queue='hello'
 После чего попробуйте отключить одну из нод, желательно ту, к которой подключались из скрипта, затем поправьте параметры подключения в скрипте consumer.py на вторую ноду и запустите его.
 
 *Приложите скриншот результата работы второго скрипта.*
+
+Прописываем соответствия ip-адреса доменному имени:
+
+```shell script
+$ cat /etc/hosts
+echo "192.168.1.105 rabbit1" >> /etc/hosts
+echo "192.168.1.88 rabbit2" >> /etc/hosts
+```
+
+Для работы кластера RabbitMQ все узлы, участвующие в кластере, должны иметь одинаковые файлы cookie.
+Скопируем содержимое файла Cookie с первой (main) машины (ноды) на вторую, которую будем добавлять в кластер. Файл Cookie находится здесь: /var/lib/rabbitmq/.erlang.cookie.
+
+На второй ноде (rabbit2) перезапустим службу:
+
+```shell script
+systemctl restart rabbitmq-server
+```
+
+Остановим и сбросим приложение:
+
+```shell script
+rabbitmqctl stop_app
+rabbitmqctl reset
+```
+
+Подключим к кластеру и запустим:
+
+```shell script
+rabbitmqctl join_cluster rabbit@rabbit1
+rabbitmqctl start_app
+```
+
+На ноде1 (rabbit1) cоздаем политику, которая позволяет зеркалировать очереди для всех узлов в кластере:
+
+```shell script
+rabbitmqctl set_policy ha-all ".*" '{"ha-mode":"all"}'  
+```
+
+![rabbit1](https://github.com/OhotinDY/sdb-04/blob/main/consumer1.jpg)
