@@ -29,6 +29,19 @@ $ pip install pika
 
 Для закрепления материала можете попробовать модифицировать скрипты, чтобы поменять название очереди и отправляемое сообщение.
 
+Очередь в веб-интерфейсе после выполнения скрипта producer.py:
+
+![producer](https://github.com/OhotinDY/sdb-04/blob/main/queue1.jpg)
+
+Очередь в веб-интерфейсе после выполнения скрипта consumer.py:
+
+![consumer](https://github.com/OhotinDY/sdb-04/blob/main/consumer.jpg)
+![consumer](https://github.com/OhotinDY/sdb-04/blob/main/consumer1.jpg)
+
+Консоль:
+
+![consol](https://github.com/OhotinDY/sdb-04/blob/main/cmdreceive.jpg)
+
 ---
 
 ### Задание 3. Подготовка HA кластера
