@@ -108,10 +108,26 @@ rabbitmqctl join_cluster rabbit@rabbit1
 rabbitmqctl start_app
 ```
 
-На ноде1 (rabbit1) cоздаем политику, которая позволяет зеркалировать очереди для всех узлов в кластере:
+На ноде1 (rabbit1) cоздаем политику, которая позволяет зеркалить очереди для всех узлов в кластере:
 
 ```shell script
 rabbitmqctl set_policy ha-all ".*" '{"ha-mode":"all"}'  
 ```
 
-![rabbit1](https://github.com/OhotinDY/sdb-04/blob/main/consumer1.jpg)
+![rabbit1](https://github.com/OhotinDY/sdb-04/blob/main/cluster.jpg)
+![rabbit1](https://github.com/OhotinDY/sdb-04/blob/main/policies.jpg)
+
+![status1](https://github.com/OhotinDY/sdb-04/blob/main/cl_status1.jpg)
+![status2](https://github.com/OhotinDY/sdb-04/blob/main/cl_status2.jpg)
+
+Устанавливаем и запускаем утилиту rabbitmqadmin:
+
+![rabbitadmin](https://github.com/OhotinDY/sdb-04/blob/main/rma2.jpg)
+![rabbitadmin](https://github.com/OhotinDY/sdb-04/blob/main/rma1.jpg)
+
+![notrun](https://github.com/OhotinDY/sdb-04/blob/main/not_run.jpg)
+
+Выполнение скрипта consumer.py на погашенной ноде1 - rabbit1:
+
+![notrun](https://github.com/OhotinDY/sdb-04/blob/main/last_cinsumer.jpg)
+
